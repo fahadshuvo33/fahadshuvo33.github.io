@@ -28,7 +28,7 @@ I am a skilled Data Analyst with a strong background in Python, SQL, and Looker.
 
 <a href="https://gitlab.com/fahadshuvo" target="blank"><img align="center" src="https://github.com/fahadshuvo33/fahadshuvo33/blob/Extra/gitlab-logo.svg" alt="" height="30" width="40" />  Gitlab  </a> 
 
-<a href="https://drive.google.com/file/d/1B5GIsQTJIcMOifbvKKI-YNCcTTOwAnZB/view?usp=share_link" target="blank"><img align="center" src="https://github.com/fahadshuvo33/fahadshuvo33/blob/Extra/curriculum-vitae.png" alt="" height="40" width="40" />  My-CV </a>
+<a href="https://drive.google.com/file/d/1EKJ3e3FKmLM5Vc1m7HERpAConDW4NCTj/view?usp=drive_link" target="blank"><img align="center" src="https://github.com/fahadshuvo33/fahadshuvo33/blob/Extra/curriculum-vitae.png" alt="" height="40" width="40" />  My-CV </a>
 </p>
 
 ## About Me
