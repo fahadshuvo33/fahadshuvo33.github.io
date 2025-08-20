@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   // For GitHub Pages deployment, always use '/portfolio/' in production mode
-  const base = mode === 'production' ? '/portfolio/' : '/'
+  const base = process.env.VITE_BASE_URL || '/'
 
   return {
     base,
