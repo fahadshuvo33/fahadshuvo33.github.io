@@ -8,6 +8,9 @@
       Skip to main content
     </a>
 
+    <!-- Navigation -->
+    <NavBar />
+
     <!-- Loading overlay -->
     <transition name="fade">
       <div v-if="isLoading" class="loading-overlay">
@@ -37,6 +40,7 @@
 import { ref, onErrorCaptured, nextTick, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import Spinner from '@/components/LoadingSpinner.vue'
+import NavBar from '@/components/NavBar.vue'
 
 const router = useRouter()
 const isLoading = ref(false)
