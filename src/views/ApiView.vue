@@ -1,79 +1,42 @@
 <template>
-  <div>
+  <div class="w-full min-h-screen">
     <!-- Loading State -->
-    <div v-show="isInitialized && !initializationError">
-      <div class="w-full">
-        <!-- Desktop container -->
-        <div class="hidden md:block max-w-[1400px] mx-auto px-6 py-6">
-          <!-- Header -->
+    <div v-show="isInitialized && !initializationError" class="w-full">
+      <!-- Single responsive container -->
+      <div class="w-full max-w-[1400px] mx-auto px-4 md:px-6 py-4 md:py-6">
+        <!-- Header -->
+        <div class="mb-6">
           <ApiHeader
             :stats="stats"
             :current-theme="currentTheme"
             @toggle-theme="toggleTheme"
             @show-help="showHelp = true"
           />
-
-          <!-- Responsive Layout -->
-          <ApiLayout
-            v-model:query-mode="queryMode"
-            :current-query="currentQuery"
-            :theme="theme"
-            :categories="categories"
-            :freestyle-info="freestyleInfo"
-            :stats="stats"
-            :achievements="achievements"
-            :selected-fields="selectedFields"
-            :hidden-fields="hiddenFieldTips"
-            :response="response"
-            :loading="loading"
-            :error="error"
-            :query-history="queryHistory"
-            @insert-query="insertQuery"
-            @example-select="handleExampleSelect"
-            @update-query="(query) => (currentQuery = query)"
-            @execute-query="executeQuery"
-            @field-selection-change="handleFieldSelectionChange"
-            @download-response="downloadResponse"
-            @load-history="loadHistoryQuery"
-          />
         </div>
 
-        <!-- Mobile container with consistent padding -->
-        <div class="block md:hidden w-full px-4 py-4">
-          <!-- Header -->
-          <div class="mb-6">
-            <ApiHeader
-              :stats="stats"
-              :current-theme="currentTheme"
-              @toggle-theme="toggleTheme"
-              @show-help="showHelp = true"
-            />
-          </div>
-
-          <!-- Responsive Layout -->
-          <ApiLayout
-            v-model:query-mode="queryMode"
-            :current-query="currentQuery"
-            :theme="theme"
-            :categories="categories"
-            :freestyle-info="freestyleInfo"
-            :stats="stats"
-            :achievements="achievements"
-            :selected-fields="selectedFields"
-            :hidden-fields="hiddenFieldTips"
-            :response="response"
-            :loading="loading"
-            :error="error"
-            :query-history="queryHistory"
-            @insert-query="insertQuery"
-            @example-select="handleExampleSelect"
-            @update-query="(query) => (currentQuery = query)"
-            @execute-query="executeQuery"
-            @field-selection-change="handleFieldSelectionChange"
-            @download-response="downloadResponse"
-            @load-history="loadHistoryQuery"
-          />
-        </div>
+        <!-- Responsive Layout -->
+        <ApiLayout
+          v-model:query-mode="queryMode"
+          :current-query="currentQuery"
+          :theme="theme"
+          :categories="categories"
+          :freestyle-info="freestyleInfo"
+          :stats="stats"
+          :achievements="achievements"
+          :selected-fields="selectedFields"
+          :hidden-fields="hiddenFieldTips"
+          :response="response"
+          :loading="loading"
+          :error="error"
+          :query-history="queryHistory"
+          @insert-query="insertQuery"
+          @example-select="handleExampleSelect"
+          @update-query="(query) => (currentQuery = query)"
+          @execute-query="executeQuery"
+          @field-selection-change="handleFieldSelectionChange"
+          @download-response="downloadResponse"
+          @load-history="loadHistoryQuery"
+        />
       </div>
 
       <!-- Help Modal -->
@@ -101,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, provide } from 'vue'
+import { ref, onMounted, watch, provide, nextTick } from 'vue'
 import type { GraphQLResponse } from '@/composables/useGraphqlStats'
 import { useTheme } from '@/composables/useTheme'
 import { usePortfolioApi } from '@/composables/useCategoryInfo'
@@ -424,6 +387,10 @@ onMounted(async () => {
   console.log('Categories on mount:', categories.value)
   console.log('FreestyleInfo on mount:', freestyleInfo.value)
   await initialize()
+  
+  // Force layout recalculation after initialization
+  await nextTick()
+  window.dispatchEvent(new Event('resize'))
 })
 
 // Provide theme to children
@@ -431,29 +398,15 @@ provide('apiTheme', theme)
 </script>
 
 <style scoped>
-/* Force consistent mobile layout */
-@media (max-width: 767px) {
-  .block.md\:hidden {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    box-sizing: border-box !important;
-    position: relative !important;
-  }
+/* Ensure consistent layout */
+.w-full {
+  width: 100% !important;
+  max-width: 100% !important;
+}
 
-  /* Prevent any child from overriding container */
-  .block.md\:hidden > * {
-    max-width: calc(100vw - 2rem) !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Ensure notifications don't affect layout */
-  .fixed.bottom-4.right-4 {
-    right: 1rem !important;
-  }
+/* Force immediate layout application */
+.max-w-\[1400px\] {
+  max-width: 1400px !important;
 }
 
 /* Custom scrollbar */
