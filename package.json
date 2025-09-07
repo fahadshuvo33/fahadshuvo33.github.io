@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/portfolio/",
+    "build": "vite build --base=/fahadshuvo33/",
     "postbuild": "cp dist/index.html dist/404.html",
     "preview": "vite preview",
     "build:local": "vite build",
