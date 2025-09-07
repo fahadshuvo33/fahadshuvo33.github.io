@@ -75,8 +75,8 @@ declare module 'vue-router' {
   }
 }
 
-// Get base URL from environment or use '/fahadshuvo33/' for GitHub Pages
-const base = import.meta.env.BASE_URL || '/fahadshuvo33/'
+// Get base URL from environment or use '/' for GitHub Pages root domain
+const base = import.meta.env.BASE_URL || '/'
 
 import HomeView from '../views/HomeView.vue'
 import ApiView from '../views/ApiView.vue'

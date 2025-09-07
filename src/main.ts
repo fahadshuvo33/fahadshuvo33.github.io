@@ -48,7 +48,7 @@ try {
       const redirectPath = sessionStorage.redirect
       if (redirectPath) {
         const path = new URL(redirectPath).pathname
-        const base = import.meta.env.BASE_URL || '/fahadshuvo33/'
+        const base = import.meta.env.BASE_URL || '/'
         const cleanedPath = path.startsWith(base) ? path.substring(base.length) : path
 
         // Ensure path starts with / for router.replace

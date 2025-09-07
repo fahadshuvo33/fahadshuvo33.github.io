@@ -31,7 +31,7 @@ export default defineConfig(({ mode }) => {
     preview: {
       port: 4173,
       historyApiFallback: true,
-      base: '/fahadshuvo33/', // Explicitly set base for preview
+      base: '/', // Explicitly set base for preview
       // Removed problematic headers that cause MIME type issues
     },
     plugins: [vue()], // Removed vueDevTools

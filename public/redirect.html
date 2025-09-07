@@ -8,16 +8,12 @@
       const currentPath = window.location.pathname;
       const isRoot = currentPath === '/' || currentPath === '';
       
-      if (isRoot && window.location.hostname === 'fahadshuvo33.github.io') {
-        // Redirect from fahadshuvo33.github.io to fahadshuvo33.github.io/fahadshuvo33
-        window.location.replace('/fahadshuvo33/');
-      } else {
-        // Store the redirect for SPA routing
+      // Store the redirect for SPA routing if needed
+      if (!isRoot) {
         sessionStorage.redirect = location.href;
-        window.location.replace('/fahadshuvo33/');
       }
     </script>
-    <meta http-equiv="refresh" content="0;URL=/fahadshuvo33/"></meta>
+    <meta http-equiv="refresh" content="0;URL=/"></meta>
   </head>
   <body>
     <p>Redirecting to portfolio...</p>
