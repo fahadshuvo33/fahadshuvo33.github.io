@@ -313,6 +313,11 @@ const calculateFontSize = () => {
   const container = containerRef.value
   const availableWidth = container.clientWidth - props.padding
 
+  // Lock font size after initial calculation
+  if (currentFontSize.value > 0 && isStartComplete.value) {
+    return
+  }
+
   const tempElement = document.createElement('pre')
   tempElement.style.position = 'absolute'
   tempElement.style.visibility = 'hidden'
@@ -336,9 +341,20 @@ const calculateFontSize = () => {
 }
 
 let resizeTimeout: number
+let lastWidth = 0
+let fontSizeLocked = false
 const handleResize = () => {
-  clearTimeout(resizeTimeout)
-  resizeTimeout = setTimeout(calculateFontSize, 100)
+  if (!containerRef.value || fontSizeLocked) return
+  
+  const currentWidth = containerRef.value.clientWidth
+  if (Math.abs(currentWidth - lastWidth) > 50) {
+    lastWidth = currentWidth
+    clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(() => {
+      calculateFontSize()
+      fontSizeLocked = true // Lock after first resize
+    }, 200)
+  }
 }
 
 const initializeAnimation = () => {
@@ -355,10 +371,15 @@ const initializeAnimation = () => {
 
 onMounted(() => {
   setTimeout(() => {
-    calculateFontSize()
-    initializeAnimation()
+    if (containerRef.value) {
+      lastWidth = containerRef.value.clientWidth
+      calculateFontSize()
+      fontSizeLocked = true // Lock font size after initial calculation
+      initializeAnimation()
+    }
   }, 300)
-  window.addEventListener('resize', handleResize)
+  // Remove resize listener entirely to prevent shrinking
+  // window.addEventListener('resize', handleResize, { passive: true })
 })
 
 onUnmounted(() => {

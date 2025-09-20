@@ -7,11 +7,8 @@ export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current directory.
   const env = loadEnv(mode, process.cwd(), '')
 
-  // Set base URL for GitHub Pages
-  const base = '/'
-
   return {
-    base,
+    base: env.VITE_APP_BASE_URL || '/',
     build: {
       outDir: 'dist',
       assetsDir: 'assets',

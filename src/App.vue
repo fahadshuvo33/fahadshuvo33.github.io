@@ -1,5 +1,8 @@
 <template>
-  <div class="min-h-screen bg-gray-100 dark:bg-gray-900" role="application">
+  <div class="min-h-screen transition-colors duration-300" :class="theme.bg.primary" role="application">
+    <!-- Themed Background Animation -->
+    <ThemedBackground />
+    
     <!-- Skip navigation link for accessibility -->
     <a
       href="#main-content"
@@ -39,10 +42,13 @@
 <script setup lang="ts">
 import { ref, onErrorCaptured, nextTick, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useTheme } from '@/composables/useTheme'
 import Spinner from '@/components/LoadingSpinner.vue'
 import NavBar from '@/components/NavBar.vue'
+import ThemedBackground from '@/components/ThemedBackground.vue'
 
 const router = useRouter()
+const { theme } = useTheme()
 const isLoading = ref(false)
 const minimumLoadingTime = 300 // ms
 

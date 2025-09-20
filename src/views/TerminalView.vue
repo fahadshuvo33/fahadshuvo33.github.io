@@ -1,9 +1,6 @@
 <!-- src/views/TerminalView.vue -->
 <template>
   <div class="terminal-page" :class="`theme-${currentTheme}`">
-    <!-- Floating Background Animation -->
-    <BackgroundAnimation />
-
     <!-- Main Container -->
     <div class="main-container">
       <!-- Terminal Wrapper -->
@@ -64,7 +61,6 @@ import TerminalHeader from '@/components/terminal/TerminalHeader.vue'
 import TerminalBody from '@/components/terminal/TerminalBody.vue'
 import TerminalFooter from '@/components/terminal/TerminalFooter.vue'
 import QuickActions from '@/components/terminal/QuickActions.vue'
-import BackgroundAnimation from '@/components/terminal/BackgroundAnimation.vue'
 import { executeTerminalQuery as runCommandLogic } from '@/terminal/executor'
 import { terminal } from '@/terminal/executor' // Import the terminal object
 
