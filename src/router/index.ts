@@ -173,7 +173,7 @@ router.beforeEach((to, from, next) => {
 
   // Update document title
   if (to.meta.title) {
-    document.title = `${to.meta.title} | Your App Name`
+    document.title = `${to.meta.title} | Fahad's Portfolio`
   }
 
   next()

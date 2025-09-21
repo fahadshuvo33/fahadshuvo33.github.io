@@ -3,9 +3,9 @@ import type { HiddenData } from './types'
 export const hiddenData: HiddenData = {
   // about secrets
   about: {
-    whatsapp: '+880 1798-533-533',
+    whatsapp: 'Contact me via email',
     telegram: '@fahadshuvo',
-    discord: 'fahad#1234',
+    // discord: 'fahad#1234',
     skype: 'fahadshuvo33',
     calendly: 'calendly.com/fahadshuvo',
     zoom: 'zoom.us/my/fahadshuvo',
@@ -15,7 +15,7 @@ export const hiddenData: HiddenData = {
     hometown: 'Chandpur, Bangladesh',
     coffee: 'Black coffee, no sugar ☕',
     editor: 'VS Code with Dracula theme',
-    os: 'Ubuntu 22.04 LTS',
+    os: 'Fedora 42 with KDE Plasma',
   },
 
   // education secrets

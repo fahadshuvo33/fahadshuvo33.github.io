@@ -112,7 +112,7 @@ export interface HiddenData {
   about: {
     whatsapp: string
     telegram: string
-    discord: string
+    // discord: string
     skype: string
     calendly: string
     zoom: string

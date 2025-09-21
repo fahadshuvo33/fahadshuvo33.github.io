@@ -25,7 +25,7 @@ export const experience: ExperienceData = {
     {
       employer: 'Cloud Development and Data Analytics',
       position: 'Junior Backend Developer',
-      duration: 'Mar 2024 – Dec 2024',
+      duration: 'Mar 2024 – Dec 2024 · 9 months',
       type: 'Full-time',
       hoursPerWeek: '40',
       workplace: 'Onsite',
@@ -97,7 +97,7 @@ export const experience: ExperienceData = {
     {
       employer: 'UY Systems Ltd.',
       position: 'Mobile Application Developer',
-      duration: 'Oct 2019 – Oct 2020 · 1 yr 1 mo',
+      duration: 'Oct 2019 – Oct 2020 · 1 year 1 month',
       type: 'Full-time',
       workplace: 'Hybrid',
       location: 'Dhaka, Bangladesh',
@@ -114,7 +114,7 @@ export const experience: ExperienceData = {
     {
       employer: 'UY Systems Ltd.',
       position: 'Data Analyst',
-      duration: 'Jun 2020 – Aug 2020 · 3 mos',
+      duration: 'Jun 2020 – Aug 2020 · 3 months',
       type: 'Part-time',
       workplace: 'Remote',
       location: 'Dhaka, Bangladesh',
@@ -133,7 +133,7 @@ export const experience: ExperienceData = {
       position: 'Java Developer',
       workplace: 'Onsite',
       location: 'Dhaka, Bangladesh',
-      duration: 'Feb 2019 – May 2019 · 4 mos',
+      duration: 'Feb 2019 – May 2019 · 4 months',
       type: 'Internship',
       description: 'Internship experience in a professional software development environment.',
       highlights: [

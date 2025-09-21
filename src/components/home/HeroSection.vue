@@ -70,7 +70,10 @@
         </div>
 
         <!-- Bio -->
-        <div class="w-full text-center">
+        <div
+          class="w-full flex justify-center text-center"
+          style="margin-bottom: 1.5rem; margin-top: 1.5rem"
+        >
           <p
             class="text-xs sm:text-sm md:text-base text-gray-300 max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto leading-relaxed font-light text-center"
           >
@@ -92,7 +95,7 @@
                   <div
                     class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
                   >
-                    5+
+                    3+
                   </div>
                   <div class="text-gray-400 font-medium text-xs sm:text-sm">Years Experience</div>
                 </div>
@@ -110,7 +113,7 @@
                   <div
                     class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
                   >
-                    50+
+                    30+
                   </div>
                   <div class="text-gray-400 font-medium text-xs sm:text-sm">Projects Completed</div>
                 </div>
@@ -138,22 +141,69 @@
           </div>
         </div>
 
-        <!-- Buttons -->
-        <div
-          class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 lg:gap-6 w-full"
-        >
-          <!-- Download Resume Button -->
-          <a
-            @click="downloadCV"
-            href="#"
-            class="group relative overflow-hidden bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-[1px] hover:from-green-400 hover:to-emerald-500 transition-all duration-300"
+        <!-- Primary Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-8 w-full max-w-2xl mx-auto">
+          <!-- View Experience Button -->
+          <button
+            @click="showExperienceModal = true"
+            class="group relative overflow-hidden rounded-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 flex-1"
           >
             <div
-              class="relative flex items-center justify-center gap-2 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-slate-900 rounded-[11px] group-hover:bg-transparent transition-all duration-300"
-            >
-              <div
-                class="w-3 h-3 sm:w-4 sm:h-4 text-green-400 group-hover:text-white transition-colors duration-300"
-              >
+              class="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+            ></div>
+            <div class="relative flex items-center justify-center gap-3 px-8 sm:px-12 py-4 sm:py-5">
+              <div class="w-6 h-6 sm:w-7 sm:h-7 text-white">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 16H5V5h14v14z"
+                  />
+                  <path d="M11 11H9V9h2v2zm4 0h-2V9h2v2zm-4 4H9v-2h2v2zm4 0h-2v-2h2v2z" />
+                </svg>
+              </div>
+              <span class="text-white font-bold text-lg sm:text-xl">My Experience</span>
+            </div>
+            <div
+              class="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white transition-opacity duration-300"
+            ></div>
+          </button>
+
+          <!-- View Projects Button -->
+          <button
+            @click="showProjectsModal = true"
+            class="group relative overflow-hidden rounded-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/25 flex-1"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-pink-600 to-rose-600 opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+            ></div>
+            <div class="relative flex items-center justify-center gap-3 px-8 sm:px-12 py-4 sm:py-5">
+              <div class="w-6 h-6 sm:w-7 sm:h-7 text-white">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                  />
+                </svg>
+              </div>
+              <span class="text-white font-bold text-lg sm:text-xl">My Projects</span>
+            </div>
+            <div
+              class="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white transition-opacity duration-300"
+            ></div>
+          </button>
+        </div>
+
+        <!-- Contact & Social Icons -->
+        <div class="flex justify-center gap-4">
+          <!-- CV/Resume -->
+          <a
+            @click="downloadCV"
+            @mouseenter="hoveredIcon = 'cv'"
+            @mouseleave="hoveredIcon = null"
+            href="#"
+            :class="['icon-button', hoveredIcon === 'cv' ? 'expanded' : '', 'animation-delay-0']"
+            class="group relative bg-slate-900/60 backdrop-blur-sm border border-green-500/30 rounded-full transition-all duration-500 overflow-hidden"
+          >
+            <div class="icon-wrapper">
+              <div class="w-5 h-5 text-green-400">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     stroke-linecap="round"
@@ -163,24 +213,28 @@
                   />
                 </svg>
               </div>
-              <span
-                class="text-green-400 group-hover:text-white font-semibold text-xs sm:text-sm transition-colors duration-300"
-                >Download Resume</span
+              <span class="icon-text text-green-400 font-semibold text-sm whitespace-nowrap"
+                >Download CV</span
               >
             </div>
           </a>
 
-          <!-- GitHub Button -->
+          <!-- GitHub -->
           <a
-            href="https://github.com/fahadhossain"
+            href="https://github.com/fahadshuvo33"
             target="_blank"
-            class="group relative overflow-hidden bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl p-[1px] hover:from-gray-400 hover:to-gray-500 transition-all duration-300"
+            @mouseenter="hoveredIcon = 'github'"
+            @mouseleave="hoveredIcon = null"
+            :class="[
+              'icon-button',
+              hoveredIcon === 'github' ? 'expanded' : '',
+              'animation-delay-1',
+            ]"
+            class="group relative bg-slate-900/60 backdrop-blur-sm border border-white/10 rounded-full transition-all duration-500 overflow-hidden"
           >
-            <div
-              class="relative flex items-center justify-center gap-2 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-slate-900 rounded-[11px] group-hover:bg-transparent transition-all duration-300"
-            >
+            <div class="icon-wrapper">
               <div
-                class="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-white transition-colors duration-300"
+                class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -189,49 +243,49 @@
                 </svg>
               </div>
               <span
-                class="text-gray-400 group-hover:text-white font-semibold text-xs sm:text-sm transition-colors duration-300"
+                class="icon-text text-gray-400 group-hover:text-white font-semibold text-sm whitespace-nowrap"
                 >GitHub</span
               >
             </div>
           </a>
 
-          <!-- LinkedIn Button -->
+          <!-- LinkedIn -->
           <a
-            href="https://linkedin.com/in/fahadhossain"
+            href="https://www.linkedin.com/in/fahad-hossain-8b162b182/"
             target="_blank"
-            class="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-[1px] hover:from-blue-400 hover:to-blue-500 transition-all duration-300"
+            @mouseenter="hoveredIcon = 'linkedin'"
+            @mouseleave="hoveredIcon = null"
+            :class="[
+              'icon-button',
+              hoveredIcon === 'linkedin' ? 'expanded' : '',
+              'animation-delay-2',
+            ]"
+            class="group relative bg-slate-900/60 backdrop-blur-sm border border-blue-500/30 rounded-full transition-all duration-500 overflow-hidden"
           >
-            <div
-              class="relative flex items-center justify-center gap-2 px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 bg-slate-900 rounded-[11px] group-hover:bg-transparent transition-all duration-300"
-            >
-              <div
-                class="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 group-hover:text-white transition-colors duration-300"
-              >
+            <div class="icon-wrapper">
+              <div class="w-5 h-5 text-blue-400">
                 <svg fill="currentColor" viewBox="0 0 24 24">
                   <path
                     d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
                   />
                 </svg>
               </div>
-              <span
-                class="text-blue-400 group-hover:text-white font-semibold text-xs sm:text-sm transition-colors duration-300"
+              <span class="icon-text text-blue-400 font-semibold text-sm whitespace-nowrap"
                 >LinkedIn</span
               >
             </div>
           </a>
-        </div>
 
-        <!-- Contact Info -->
-        <div class="text-center w-full">
-          <div
-            class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-4 lg:gap-6 text-gray-300"
+          <!-- Email -->
+          <a
+            href="mailto:fahadshuvo33@gmail.com"
+            @mouseenter="hoveredIcon = 'email'"
+            @mouseleave="hoveredIcon = null"
+            :class="['icon-button', hoveredIcon === 'email' ? 'expanded' : '', 'animation-delay-3']"
+            class="group relative bg-slate-900/60 backdrop-blur-sm border border-cyan-500/30 rounded-full transition-all duration-500 overflow-hidden"
           >
-            <div
-              class="flex items-center gap-2 group hover:text-cyan-300 transition-colors duration-300"
-            >
-              <div
-                class="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 group-hover:scale-110 transition-transform duration-300"
-              >
+            <div class="icon-wrapper">
+              <div class="w-5 h-5 text-cyan-400">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     stroke-linecap="round"
@@ -241,35 +295,25 @@
                   />
                 </svg>
               </div>
-              <span class="text-xs sm:text-sm font-medium">fahad@example.com</span>
-            </div>
-            <div
-              class="flex items-center gap-2 group hover:text-green-300 transition-colors duration-300"
-            >
-              <div
-                class="w-3 h-3 sm:w-4 sm:h-4 text-green-400 group-hover:scale-110 transition-transform duration-300"
+              <span class="icon-text text-cyan-400 font-semibold text-sm whitespace-nowrap"
+                >Email Me</span
               >
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-              </div>
-              <span class="text-xs sm:text-sm font-medium">+1 (555) 123-4567</span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
   </section>
+  <ExperienceModal :isVisible="showExperienceModal" @close="showExperienceModal = false" />
+  <ProjectsModal :isVisible="showProjectsModal" @close="showProjectsModal = false" />
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import DynamicAsciiName from '@/components/AsciiName.vue'
+import ExperienceModal from '@/components/home/ExperienceModal.vue'
+import ProjectsModal from '@/components/home/ProjectsModal.vue'
+const hoveredIcon = ref<string | null>(null)
 
 const roles = ['Python Developer', 'Django Developer', 'API Developer']
 const currentRoleIndex = ref(0)
@@ -290,13 +334,16 @@ onBeforeUnmount(() => {
 })
 
 const bioText = ref(
-  'Passionate about crafting elegant digital solutions that make a difference. I transform ideas into scalable, user-friendly applications using modern web technologies. With expertise in Python, Django, and API development, I create robust backend systems that power amazing user experiences.',
+  'I enjoy building digital solutions that are practical and useful. I take ideas and turn them into scalable, easy-to-use applications with modern web tools. With experience in Python, Django, and API development, I focus on creating solid backend systems that support great user experiences.',
 )
+
+const showExperienceModal = ref(false)
+const showProjectsModal = ref(false)
 
 const downloadCV = (event: Event) => {
   event.preventDefault()
   const link = document.createElement('a')
-  link.href = '/fahad-hossain-resume.pdf'
+  link.href = '/fahad.pdf'
   link.download = 'Fahad_Hossain_Resume.pdf'
   document.body.appendChild(link)
   link.click()
@@ -344,5 +391,75 @@ const downloadCV = (event: Event) => {
 
 .animate-gradient-fast {
   animation: gradient-fast 4s ease infinite;
+}
+
+/* Icon button animations */
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.icon-button.expanded {
+  width: auto;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0.75rem;
+}
+
+.icon-button .icon-text {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  margin-left: 0;
+}
+
+.icon-button.expanded .icon-text {
+  max-width: 150px;
+  opacity: 1;
+  margin-left: 0.5rem;
+}
+
+/* Wave animation when not hovered */
+@keyframes icon-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.icon-button:not(.expanded) {
+  animation: icon-pulse 2s ease-in-out infinite;
+}
+
+.icon-button:hover {
+  animation: none;
+}
+
+/* Stagger the animation delays */
+.animation-delay-0:not(.expanded) {
+  animation-delay: 0s;
+}
+
+.animation-delay-1:not(.expanded) {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-2:not(.expanded) {
+  animation-delay: 1s;
+}
+
+.animation-delay-3:not(.expanded) {
+  animation-delay: 1.5s;
 }
 </style>

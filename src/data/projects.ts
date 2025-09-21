@@ -12,13 +12,9 @@ export const projects: ProjectData = {
       github: 'github.com/fahadshuvo33/mitnity',
 
       images: {
-        thumbnail: '/images/projects/mitnity/thumbnail.png',
-        screenshots: [
-          '/images/projects/mitnity/screenshot-1.png', // Dashboard
-          '/images/projects/mitnity/screenshot-2.png', // Event creation
-          '/images/projects/mitnity/screenshot-3.png', // Ticket management
-        ],
-        architecture: '/images/projects/mitnity/architecture.png',
+        thumbnail: '',
+        screenshots: [],
+        architecture: '',
       },
 
       features: [
@@ -37,20 +33,31 @@ export const projects: ProjectData = {
       category: 'Frontend',
       status: 'completed',
       github: 'github.com/fahadshuvo33/quranverse',
-      live: 'quranverse.app',
+      live: 'https://quranverse.islam.cl/',
 
       images: {
-        thumbnail: '/images/projects/quranverse/thumbnail.png',
-        screenshots: [
-          '/images/projects/quranverse/screenshot-1.png', // Home page
-          '/images/projects/quranverse/screenshot-2.png', // Verse reader
-          '/images/projects/quranverse/screenshot-3.png', // Search feature
-        ],
-        demo: '/images/projects/quranverse/demo.gif', // Animated demo
+        thumbnail: '',
+        screenshots: [],
+        demo: '', // Animated demo
       },
     },
   ],
   bots: [
+    {
+      name: 'GitScope Bot',
+      description:
+        'A Telegram bot that can search for public repositories and profiles on GitHub using the GitHub API',
+      tech: ['Python', 'Python-dotenv', 'Python Telegram Bot', 'Asyncio', 'GitHub API'],
+      category: 'Bot Development',
+      status: 'maintained',
+      github: 'https://github.com/fahadshuvo33/gitscope-bot',
+      features: [
+        'Search for public repositories with keywords',
+        'Search for public profiles with usernames',
+        'Search for trending repositories',
+        'Search for repositories with specific programming languages',
+      ],
+    },
     {
       name: 'QuoteBot: Multi-Platform Bot',
       description:
